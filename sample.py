@@ -105,7 +105,6 @@ def main(args):
             seen.add(seq)
             seqs.append(seq)
             pbar.update(1)
-
         seed_i += 1
 
     pbar.close()
@@ -113,15 +112,15 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out-path", type=str, default="example/output/peptide.fasta",help="Path to the output FASTA file where the extracted protein sequence will be saved.")
-    parser.add_argument("--ckpt-path", type=str, default='checkpoint',help="")
-    parser.add_argument("--receptor-seq-path", type=str, default='example/receptor_seq_emb.pkl',help="")
-    parser.add_argument("--receptor-structure-path", type=str, default='example/receptor_structure_emb.pkl',help="")
+    parser.add_argument("--out-path", type=str, default="example/output/peptide.fasta",help="Path to the output FASTA file where the generated protein sequence will be saved.")
+    parser.add_argument("--ckpt-path", type=str, default='checkpoint',help="Path to the model weights file.")
+    parser.add_argument("--receptor-seq-path", type=str, default='example/receptor_seq_emb.pkl',help="Path to the target sequence characterization file.")
+    parser.add_argument("--receptor-structure-path", type=str, default='example/receptor_structure_emb.pkl',help="Path to the target structure characterization file.")
     parser.add_argument("--length", type=int, default=15,help="Length of the peptide sequence to be generated.")
-    parser.add_argument("--temperature", type=float, default=1.0,help="temperature between 0.01 and 1.0")
-    parser.add_argument("--num", type=int, default=10,help="")
+    parser.add_argument("--temperature", type=float, default=1.0,help="Temperature between 0.2 and 1.0.")
+    parser.add_argument("--num", type=int, default=10,help="Num of the peptide sequence to be generated.")
     args = parser.parse_args()
-    if not (0.01 <= args.temperature <= 1.0):
+    if not (0.2 <= args.temperature <= 1.0):
         parser.error("temperature must be between 0.0 and 1.0")
     import multiprocessing
     multiprocessing.set_start_method('spawn')

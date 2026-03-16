@@ -36,8 +36,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out-path", type=str, default="example/output/pdb_dir",help="Path to the output FASTA file where the extracted protein sequence will be saved.")
-    parser.add_argument("--fasta-path", type=str, default="example/output/peptide.fasta",help="")
+    parser.add_argument("--out-path", type=str, default="example/output/pdb_dir",help="Path to the output PDB dir.")
+    parser.add_argument("--fasta-path", type=str, default="example/output/peptide.fasta",help="Path to the input FASTA file.")
     args = parser.parse_args()
     import multiprocessing
     multiprocessing.set_start_method('spawn')
