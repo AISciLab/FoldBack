@@ -121,7 +121,7 @@ if __name__ == "__main__":
     parser.add_argument("--num", type=int, default=10,help="Num of the peptide sequence to be generated.")
     args = parser.parse_args()
     if not (0.2 <= args.temperature <= 1.0):
-        parser.error("temperature must be between 0.0 and 1.0")
+        parser.error("temperature must be between 0.2 and 1.0")
     import multiprocessing
     multiprocessing.set_start_method('spawn')
     main(args)
